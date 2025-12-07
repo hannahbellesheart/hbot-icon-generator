@@ -80,6 +80,12 @@
 
     // Handle file upload
     function handleFile(file) {
+        // Validate file type
+        if (!file.type.startsWith('image/')) {
+            alert('Please upload a valid image file (PNG, JPG, SVG, etc.)');
+            return;
+        }
+
         const reader = new FileReader();
         
         reader.onload = (e) => {
@@ -90,7 +96,14 @@
                 previewSection.style.display = 'block';
                 uploadArea.style.display = 'none';
             };
+            img.onerror = () => {
+                alert('Failed to load image. Please try a different file.');
+            };
             img.src = e.target.result;
+        };
+
+        reader.onerror = () => {
+            alert('Failed to read file. Please try again.');
         };
         
         reader.readAsDataURL(file);
@@ -165,12 +178,12 @@
         ctx.closePath();
     }
 
-    // Download all icons as a ZIP file
+    // Download all icons individually
     async function downloadAllIcons() {
         const sizes = [512, 256, 128, 64, 32, 16];
         
-        // For simplicity, download each icon individually
-        // In a production app, you might want to use JSZip library to create a ZIP file
+        // Download each icon individually
+        // Note: To create a ZIP file, consider using the JSZip library
         for (const size of sizes) {
             const canvas = canvases[size];
             const dataUrl = canvas.toDataURL('image/png');
