@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Client-side, professional-grade icon generator. All processing happens in browser.">
+    <title>HBot Icon Generator</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🤖 HBot Icon Generator</h1>
+            <p class="subtitle">Client-side, professional-grade icon generator</p>
+            <p class="privacy-note">🔒 All processing happens in your browser - your images never leave your device</p>
+        </header>
+
+        <main>
+            <section class="upload-section">
+                <div class="upload-area" id="uploadArea">
+                    <div class="upload-content">
+                        <svg class="upload-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                            <polyline points="17 8 12 3 7 8"></polyline>
+                            <line x1="12" y1="3" x2="12" y2="15"></line>
+                        </svg>
+                        <p class="upload-text">Drop an image here or click to select</p>
+                        <p class="upload-hint">Supports PNG, JPG, SVG (Recommended: 512x512px or larger)</p>
+                    </div>
+                    <input type="file" id="fileInput" accept="image/*" hidden>
+                </div>
+            </section>
+
+            <section class="preview-section" id="previewSection" style="display: none;">
+                <h2>Preview</h2>
+                <div class="preview-grid">
+                    <div class="preview-item">
+                        <canvas id="canvas512" width="512" height="512"></canvas>
+                        <p>512x512</p>
+                    </div>
+                    <div class="preview-item">
+                        <canvas id="canvas256" width="256" height="256"></canvas>
+                        <p>256x256</p>
+                    </div>
+                    <div class="preview-item">
+                        <canvas id="canvas128" width="128" height="128"></canvas>
+                        <p>128x128</p>
+                    </div>
+                    <div class="preview-item">
+                        <canvas id="canvas64" width="64" height="64"></canvas>
+                        <p>64x64</p>
+                    </div>
+                    <div class="preview-item">
+                        <canvas id="canvas32" width="32" height="32"></canvas>
+                        <p>32x32</p>
+                    </div>
+                    <div class="preview-item">
+                        <canvas id="canvas16" width="16" height="16"></canvas>
+                        <p>16x16</p>
+                    </div>
+                </div>
+
+                <div class="options-section">
+                    <h3>Options</h3>
+                    <div class="option-group">
+                        <label>
+                            <input type="checkbox" id="roundedCorners" checked>
+                            Rounded Corners
+                        </label>
+                        <label>
+                            <input type="checkbox" id="addPadding" checked>
+                            Add Padding (10%)
+                        </label>
+                        <label>
+                            <input type="checkbox" id="transparentBg">
+                            Transparent Background
+                        </label>
+                    </div>
+                    <div class="option-group">
+                        <label for="bgColor">Background Color:</label>
+                        <input type="color" id="bgColor" value="#ffffff">
+                    </div>
+                </div>
+
+                <div class="actions">
+                    <button class="btn btn-primary" id="downloadBtn">Download All Icons</button>
+                    <button class="btn btn-secondary" id="resetBtn">Upload New Image</button>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <p>Made with ❤️ by Hannah Belle | <a href="https://github.com/hannahbellesheart/hbot-icon-generator" target="_blank">View on GitHub</a></p>
+        </footer>
+    </div>
+
+    <script src="assets/js/app.js"></script>
+</body>
+</html>
